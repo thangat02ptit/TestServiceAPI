@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.restapi.demo.model.grades;
 import com.restapi.demo.service.RestaurantService;
 
-@Controller
+@RestController
 @RequestMapping("/api")
 public class RestApiController {
     public static Logger logger = LoggerFactory.getLogger(RestApiController.class);
@@ -24,10 +24,10 @@ public class RestApiController {
 
     @RequestMapping(value = "/restaurant/", method = RequestMethod.GET)
     public ResponseEntity<List<grades>> listAllContact(){
-        List<grades> listContact= restaurantService.findAll();
-        if(listContact.isEmpty()) {
+        List<grades> listGrade= restaurantService.findAll();
+        if(listGrade.isEmpty()) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<List<grades>>(listContact, HttpStatus.OK);
+        return new ResponseEntity<List<grades>>(listGrade, HttpStatus.OK);
     }
 }
